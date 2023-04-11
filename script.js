@@ -1,11 +1,12 @@
 let input = document.querySelector("input");
-let searchBtn = document.querySelector("a");
+let searchBtn = document.querySelector("button");
 
 
 searchBtn.onclick = ((e) => {
     e.preventDefault()
-    let flagbox = document.querySelector("#box2");
+    let flagbox = document.querySelector(".flag");
     flagbox.innerHTML = "";
+    let country = input.value.toUpperCase()
 
     fetch("https://flagcdn.com/en/codes.json")
         .then((response) => { return response.json() })
@@ -22,7 +23,7 @@ function showflag(result) {
         if (value === flagCapitalize) {
             let img = document.createElement("img");
             img.src = "https://flagcdn.com/160x120/" + ([key][0]) + ".png";
-            document.querySelector("#box2").append(img);
+            document.querySelector(".flag").append(img);
         }
     }
 }
