@@ -6,7 +6,7 @@ searchBtn.onclick = ((e) => {
     e.preventDefault()
     let flagbox = document.querySelector(".flag");
     flagbox.innerHTML = "";
-    let country = input.value.toUpperCase()
+    // let country = input.value.toUpperCase()
 
     fetch("https://flagcdn.com/en/codes.json")
         .then((response) => { return response.json() })
@@ -18,7 +18,7 @@ searchBtn.onclick = ((e) => {
 
 function showflag(result) {
     let flagname = input.value;
-    let flagCapitalize = flagname.charAt(0).toUpperCase() + flagname.slice(1)
+    let flagCapitalize = flagname.charAt(0).toUpperCase() + flagname.slice(1).toLocaleLowerCase();
     for (let [key, value] of Object.entries(result)) {
         if (value === flagCapitalize) {
             let img = document.createElement("img");
